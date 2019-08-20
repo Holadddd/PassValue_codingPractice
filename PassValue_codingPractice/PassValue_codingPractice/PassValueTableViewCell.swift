@@ -12,10 +12,7 @@ class PassValueTableViewCell: UITableViewCell {
 
     @IBOutlet weak var showTextLabel: UILabel!
     
-//    @IBAction func deleteButton(_ sender: UIButton) {
-////        delegate?.deleteCell(self)
-//        completion?(self)
-//    }
+
     
     @IBOutlet weak var deleteBtn: UIButton!
     
@@ -32,8 +29,8 @@ class PassValueTableViewCell: UITableViewCell {
     }
 
     @objc func btn(_ sender: UIButton){
-    delegate?.deleteCell(self)
-    //        completion?(self)
+        delegate?.deleteCell(self)
+        completion?(self)
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

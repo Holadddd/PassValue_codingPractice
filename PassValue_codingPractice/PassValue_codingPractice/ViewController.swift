@@ -14,6 +14,21 @@ enum Result<T> {
     
     case failure(Error)
 }
+
+//struct textObject {
+//    var text: String
+//}
+//
+//class textRFObject {
+//    var text: String
+//    init(text: String) {
+//        self.text = text
+//    }
+//}
+enum TextValue<T,P> {
+    case upDate(T,P)
+    case add(T)
+}
 protocol PassValue {
     func updateCell(text: String, indexpath:IndexPath)
     
@@ -75,9 +90,6 @@ extension ViewController: UITableViewDataSource {
         //delegate
         //        cell.delegate = self
         
-        
-
-        
         return cell
     }
     
@@ -85,10 +97,34 @@ extension ViewController: UITableViewDataSource {
 
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "AddTextViewController") as? AddTextViewController else { fatalError() }
-        vc.delegate = self
-        vc.selectIndexpath = indexPath
         vc.valueFromVC = textArr[indexPath.row]
+        vc.selectIndexpath = indexPath
+
+        //delegate
+//        vc.delegate = self
         
+        //closure
+        vc.completion = { (text:TextValue<String, IndexPath>) -> Void in
+            switch text {
+            case .add(let text):
+                self.addCell(text: text)
+            case .upDate(let text, let indexpath):
+                print(text)
+                print(indexpath)
+                self.updateCell(text: text, indexpath: indexpath)
+            }
+        }
+        
+        show(vc, sender: nil)
+    }
+    
+    func addButton() {
+        
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "AddTextViewController") as? AddTextViewController else { fatalError() }
+        //delegate
+        //        vc.delegate = self
+        //closure
         vc.completion = { (text:TextValue<String, IndexPath>) -> Void in
             switch text {
             case .add(let text):
@@ -112,11 +148,7 @@ extension ViewController {
         
         deleteCell(cell)
     }
-    
-    
-    
-    
-    
+
 }
 extension ViewController: PassValue {
     //protocol
@@ -136,49 +168,12 @@ extension ViewController: PassValue {
         print(indexPath)
         textArr.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
-
     }
     
 }
 
 extension ViewController {
     
-    func addButton() {
-
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "AddTextViewController") as? AddTextViewController else { fatalError() }
-        vc.delegate = self
-        vc.completion = { (text:TextValue<String, IndexPath>) -> Void in
-            switch text {
-            case .add(let text):
-                self.addCell(text: text)
-            case .upDate(let text, let indexpath):
-                print(text)
-                print(indexpath)
-                self.updateCell(text: text, indexpath: indexpath)
-            default:
-                print("default")
-                return
-            }
-        }
-        show(vc, sender: nil)
-
-    }
     
-    
-}
 
-//struct textObject {
-//    var text: String
-//}
-//
-//class textRFObject {
-//    var text: String
-//    init(text: String) {
-//        self.text = text
-//    }
-//}
-enum TextValue<T,P> {
-    case upDate(T,P)
-    case add(T)
 }

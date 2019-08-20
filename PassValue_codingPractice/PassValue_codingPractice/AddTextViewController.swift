@@ -40,7 +40,7 @@ class AddTextViewController: UIViewController {
         
         textFieldSetUp()
         buttonSetUp()
-        print(valueFromVC)
+
         guard let text = valueFromVC else { return }
         textField.text = text
         
@@ -85,21 +85,21 @@ extension AddTextViewController {
     }
     
     @objc func btn() {
-        //delegate
+        
         if valueFromVC == nil {
             guard let text = textField.text else { return }
-//            self.delegate?.addCell(text: text)
+            //delegate
+            self.delegate?.addCell(text: text)
+            //closure
             completion?(.add(text))
         } else {
             guard let text = textField.text else { return }
             guard let indexpath = selectIndexpath else { return }
-//            self.delegate?.updateCell(text: text, indexpath: indexpath)
+            //deleagte
+            self.delegate?.updateCell(text: text, indexpath: indexpath)
+            //closure
             completion?(.upDate(text,indexpath))
         }
-        
-        print(completion)
-        
-        
         self.navigationController?.popViewController(animated: true)
     }
     
