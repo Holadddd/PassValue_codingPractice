@@ -18,7 +18,7 @@ class AddTextViewController: UIViewController {
     
     var checkButton: UIButton! {
         didSet {
-
+            
         }
     }
 
@@ -63,5 +63,13 @@ extension AddTextViewController {
         checkButton.topAnchor.constraint(equalTo: view.centerYAnchor, constant: 20).isActive = true
         checkButton.setTitle("CHECK", for: .normal)
         checkButton.backgroundColor = .black
+        checkButton.addTarget(self, action: #selector(AddTextViewController.btn), for: .touchUpInside)
+    }
+    
+    @objc func btn() {
+        print(textField.text)
+        textField.text = ""
+        
+        self.navigationController?.popViewController(animated: true)
     }
 }

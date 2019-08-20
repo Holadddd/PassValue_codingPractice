@@ -85,7 +85,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="4tU-md-lwd" id="C36-yH-WDH"/>
-                        <segue destination="ycr-0c-rkU" kind="show" identifier="AddText" id="yGr-pC-fRY"/>
+                        <segue destination="ycr-0c-rkU" kind="push" identifier="AddText" id="yGr-pC-fRY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -102,6 +102,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="YUq-q1-JVb"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7kT-6Z-W7s"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGz-L7-lza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -110,6 +111,7 @@
         <!--Navigation Controller-->
         <scene sceneID="QyU-c6-YGg">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4iC-VR-MNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MKM-vG-h6K" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x8G-r5-GpM">
@@ -121,7 +123,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BVw-r9-6jm"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4iC-VR-MNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="50.724637681159422" y="-654.24107142857144"/>
         </scene>
