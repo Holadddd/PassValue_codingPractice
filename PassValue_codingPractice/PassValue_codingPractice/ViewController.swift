@@ -71,10 +71,33 @@ extension ViewController: UITableViewDataSource {
         vc.delegate = self
         vc.selectIndexpath = indexPath
         vc.valueFromVC = textArr[indexPath.row]
+        
+        vc.completion = { (text:TextValue<String, IndexPath>) -> Void in
+            switch text {
+            case .add(let text):
+                self.addCell(text: text)
+            case .upDate(let text, let indexpath):
+                print(text)
+                print(indexpath)
+                self.updateCell(text: text, indexpath: indexpath)
+            default:
+                print("default")
+                return
+            }
+        }
+        
         show(vc, sender: nil)
     }
 }
 
+extension ViewController {
+    
+    
+    
+    
+    
+    
+}
 extension ViewController {
     //delegate
     func updateCell(text: String, indexpath:IndexPath) {
@@ -82,20 +105,20 @@ extension ViewController {
         textArr.insert(text, at: indexpath.row)
         tableView.reloadData()
     }
-    
+
     func addCell(text: String) {
         textArr.append(text)
         tableView.reloadData()
     }
-
-    //delegate
-    func deleteCell(_ cell:PassValueTableViewCell) {
-        guard let indexPath = tableView.indexPath(for: cell) else { fatalError() }
-        print(indexPath)
-        textArr.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-        
-    }
+//
+//    //delegate
+//    func deleteCell(_ cell:PassValueTableViewCell) {
+//        guard let indexPath = tableView.indexPath(for: cell) else { fatalError() }
+//        print(indexPath)
+//        textArr.remove(at: indexPath.row)
+//        tableView.deleteRows(at: [indexPath], with: .fade)
+//
+//    }
     
 }
 
@@ -106,7 +129,19 @@ extension ViewController {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "AddTextViewController") as? AddTextViewController else { fatalError() }
         vc.delegate = self
-        
+        vc.completion = { (text:TextValue<String, IndexPath>) -> Void in
+            switch text {
+            case .add(let text):
+                self.addCell(text: text)
+            case .upDate(let text, let indexpath):
+                print(text)
+                print(indexpath)
+                self.updateCell(text: text, indexpath: indexpath)
+            default:
+                print("default")
+                return
+            }
+        }
         show(vc, sender: nil)
 
     }
@@ -124,3 +159,7 @@ extension ViewController {
 //        self.text = text
 //    }
 //}
+enum TextValue<T,P> {
+    case upDate(T,P)
+    case add(T)
+}

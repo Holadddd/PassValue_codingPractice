@@ -13,7 +13,7 @@ class PassValueTableViewCell: UITableViewCell {
     @IBOutlet weak var showTextLabel: UILabel!
     
     @IBAction func deleteButton(_ sender: UIButton) {
-        delegate?.deleteCell(self)
+//        delegate?.deleteCell(self)
     }
     
     

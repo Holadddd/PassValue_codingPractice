@@ -32,6 +32,9 @@ class AddTextViewController: UIViewController {
     
     var selectIndexpath: IndexPath?
     
+    
+    var completion: ((TextValue<String, IndexPath>) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,16 +85,23 @@ extension AddTextViewController {
     }
     
     @objc func btn() {
-        print(textField.text)
+        //delegate
         if valueFromVC == nil {
             guard let text = textField.text else { return }
-            self.delegate?.addCell(text: text)
+//            self.delegate?.addCell(text: text)
+            completion?(.add(text))
         } else {
             guard let text = textField.text else { return }
             guard let indexpath = selectIndexpath else { return }
-            self.delegate?.updateCell(text: text, indexpath: indexpath)
+//            self.delegate?.updateCell(text: text, indexpath: indexpath)
+            completion?(.upDate(text,indexpath))
         }
+        
+        print(completion)
+        
+        
         self.navigationController?.popViewController(animated: true)
     }
+    
     
 }
