@@ -22,17 +22,25 @@ class AddTextViewController: UIViewController {
         }
     }
     
-    var valueFromVC: textRFObject? {
+    var valueFromVC: String? {
         didSet {
-            print(valueFromVC?.text)
+            
         }
     }
     
+    var delegate: ViewController?
+    
+    var selectIndexpath: IndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         textFieldSetUp()
         buttonSetUp()
-        textField.text = valueFromVC?.text
+        print(valueFromVC)
+        guard let text = valueFromVC else { return }
+        textField.text = text
+        
     }
 }
 
@@ -75,9 +83,15 @@ extension AddTextViewController {
     
     @objc func btn() {
         print(textField.text)
-        valueFromVC?.text = textField.text!
-        textField.text = ""
-        
+        if valueFromVC == nil {
+            guard let text = textField.text else { return }
+            self.delegate?.addCell(text: text)
+        } else {
+            guard let text = textField.text else { return }
+            guard let indexpath = selectIndexpath else { return }
+            self.delegate?.updateCell(text: text, indexpath: indexpath)
+        }
         self.navigationController?.popViewController(animated: true)
     }
+    
 }
