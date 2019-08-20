@@ -76,14 +76,36 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rEF-2N-vxw"/>
+                    <navigationItem key="navigationItem" id="rEF-2N-vxw">
+                        <barButtonItem key="rightBarButtonItem" title="ADD" id="aTy-bq-SPo">
+                            <connections>
+                                <action selector="addTextButton:" destination="BYZ-38-t0r" id="L5B-la-WnF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="4tU-md-lwd" id="C36-yH-WDH"/>
+                        <segue destination="ycr-0c-rkU" kind="show" identifier="AddText" id="yGr-pC-fRY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1029" y="-654"/>
+        </scene>
+        <!--Add Text View Controller-->
+        <scene sceneID="pDM-ii-hck">
+            <objects>
+                <viewController id="ycr-0c-rkU" customClass="AddTextViewController" customModule="PassValue_codingPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="90I-dX-ymD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.57926702539999997" green="0.94258779290000005" blue="0.87385210570000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="YUq-q1-JVb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GGz-L7-lza" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2029" y="-654"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QyU-c6-YGg">

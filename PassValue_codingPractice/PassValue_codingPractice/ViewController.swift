@@ -14,10 +14,14 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func addTextButton(_ sender: UIBarButtonItem) {
+        addButton()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
 
 }
@@ -54,4 +58,11 @@ extension ViewController {
         
     }
     
+}
+
+extension ViewController {
+    
+    func addButton() {
+        performSegue(withIdentifier: "AddText", sender: nil)
+    }
 }

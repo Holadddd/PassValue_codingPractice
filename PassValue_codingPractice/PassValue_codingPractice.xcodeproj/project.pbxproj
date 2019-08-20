@@ -14,6 +14,7 @@
 		01E02472230BAEC400CF24F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E02471230BAEC400CF24F2 /* Assets.xcassets */; };
 		01E02475230BAEC400CF24F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E02473230BAEC400CF24F2 /* LaunchScreen.storyboard */; };
 		01E0247D230BB03E00CF24F2 /* PassValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0247C230BB03E00CF24F2 /* PassValueTableViewCell.swift */; };
+		01E0247F230BC99700CF24F2 /* AddTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E0247E230BC99700CF24F2 /* AddTextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		01E02474230BAEC400CF24F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01E02476230BAEC400CF24F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01E0247C230BB03E00CF24F2 /* PassValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassValueTableViewCell.swift; sourceTree = "<group>"; };
+		01E0247E230BC99700CF24F2 /* AddTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				01E02469230BAEC300CF24F2 /* ViewController.swift */,
 				01E0247C230BB03E00CF24F2 /* PassValueTableViewCell.swift */,
 				01E0246B230BAEC300CF24F2 /* Main.storyboard */,
+				01E0247E230BC99700CF24F2 /* AddTextViewController.swift */,
 				01E02471230BAEC400CF24F2 /* Assets.xcassets */,
 				01E02473230BAEC400CF24F2 /* LaunchScreen.storyboard */,
 				01E02476230BAEC400CF24F2 /* Info.plist */,
@@ -144,6 +147,7 @@
 				01E0246A230BAEC300CF24F2 /* ViewController.swift in Sources */,
 				01E02468230BAEC300CF24F2 /* AppDelegate.swift in Sources */,
 				01E0247D230BB03E00CF24F2 /* PassValueTableViewCell.swift in Sources */,
+				01E0247F230BC99700CF24F2 /* AddTextViewController.swift in Sources */,
 				01E02470230BAEC300CF24F2 /* PassValue_codingPractice.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
