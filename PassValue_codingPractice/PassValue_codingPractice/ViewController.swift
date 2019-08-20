@@ -54,12 +54,21 @@ extension ViewController: UITableViewDataSource {
 
         let info = textArr[indexPath.row]
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PassValueTableViewCell") as? PassValueTableViewCell else { fatalError() }
+        cell.showTextLabel.text = info
+        //closure
+        cell.completion = {(cell: UITableViewCell)->Void in
+            guard let cell = cell as? PassValueTableViewCell else { fatalError() }
+            self.deleteCell(cell)
+        }
+        
         //target_action
         
         
         //delegate
-        cell.showTextLabel.text = info
-        cell.delegate = self
+        //        cell.delegate = self
+        
+        
+
         
         return cell
     }
@@ -99,7 +108,7 @@ extension ViewController {
     
 }
 extension ViewController {
-    //delegate
+    //protocol
     func updateCell(text: String, indexpath:IndexPath) {
         textArr.remove(at: indexpath.row)
         textArr.insert(text, at: indexpath.row)
@@ -110,15 +119,14 @@ extension ViewController {
         textArr.append(text)
         tableView.reloadData()
     }
-//
-//    //delegate
-//    func deleteCell(_ cell:PassValueTableViewCell) {
-//        guard let indexPath = tableView.indexPath(for: cell) else { fatalError() }
-//        print(indexPath)
-//        textArr.remove(at: indexPath.row)
-//        tableView.deleteRows(at: [indexPath], with: .fade)
-//
-//    }
+
+    func deleteCell(_ cell:PassValueTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { fatalError() }
+        print(indexPath)
+        textArr.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+
+    }
     
 }
 

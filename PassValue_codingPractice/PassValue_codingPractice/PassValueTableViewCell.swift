@@ -14,8 +14,10 @@ class PassValueTableViewCell: UITableViewCell {
     
     @IBAction func deleteButton(_ sender: UIButton) {
 //        delegate?.deleteCell(self)
+        completion?(self)
     }
     
+    var completion: ((UITableViewCell)->Void)?
     
     
     weak var delegate: ViewController?
