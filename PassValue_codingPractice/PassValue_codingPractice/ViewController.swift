@@ -14,6 +14,13 @@ enum Result<T> {
     
     case failure(Error)
 }
+protocol PassValue {
+    func updateCell(text: String, indexpath:IndexPath)
+    
+    func addCell(text: String)
+    
+    func deleteCell(_ cell:PassValueTableViewCell)
+}
 
 class ViewController: UIViewController {
     
@@ -56,13 +63,14 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PassValueTableViewCell") as? PassValueTableViewCell else { fatalError() }
         cell.showTextLabel.text = info
         //closure
-        cell.completion = {(cell: UITableViewCell)->Void in
-            guard let cell = cell as? PassValueTableViewCell else { fatalError() }
-            self.deleteCell(cell)
-        }
+//        cell.completion = {(cell: UITableViewCell)->Void in
+//            guard let cell = cell as? PassValueTableViewCell else { fatalError() }
+//            self.deleteCell(cell)
+//        }
         
         //target_action
-        
+        cell.deleteBtn.accessibilityElements = [cell]
+        cell.deleteBtn.addTarget(self, action: #selector(ViewController.btnDeleteCell), for: .touchUpInside)
         
         //delegate
         //        cell.delegate = self
@@ -89,9 +97,6 @@ extension ViewController: UITableViewDataSource {
                 print(text)
                 print(indexpath)
                 self.updateCell(text: text, indexpath: indexpath)
-            default:
-                print("default")
-                return
             }
         }
         
@@ -101,13 +106,19 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController {
     
+    @objc func btnDeleteCell(sender: UIButton) {
+        print(sender.accessibilityElements![0])
+        guard let cell = sender.accessibilityElements?[0] as? PassValueTableViewCell else { fatalError() }
+        
+        deleteCell(cell)
+    }
     
     
     
     
     
 }
-extension ViewController {
+extension ViewController: PassValue {
     //protocol
     func updateCell(text: String, indexpath:IndexPath) {
         textArr.remove(at: indexpath.row)

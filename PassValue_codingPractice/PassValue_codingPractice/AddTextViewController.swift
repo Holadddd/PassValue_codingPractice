@@ -28,7 +28,7 @@ class AddTextViewController: UIViewController {
         }
     }
     
-    var delegate: ViewController?
+    var delegate: PassValue?
     
     var selectIndexpath: IndexPath?
     

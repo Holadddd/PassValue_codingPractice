@@ -12,22 +12,29 @@ class PassValueTableViewCell: UITableViewCell {
 
     @IBOutlet weak var showTextLabel: UILabel!
     
-    @IBAction func deleteButton(_ sender: UIButton) {
-//        delegate?.deleteCell(self)
-        completion?(self)
-    }
+//    @IBAction func deleteButton(_ sender: UIButton) {
+////        delegate?.deleteCell(self)
+//        completion?(self)
+//    }
+    
+    @IBOutlet weak var deleteBtn: UIButton!
     
     var completion: ((UITableViewCell)->Void)?
     
     
-    weak var delegate: ViewController?
+    var delegate: PassValue?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        deleteBtn.addTarget(self, action: #selector(PassValueTableViewCell.btn), for: .touchUpInside)
         
     }
 
+    @objc func btn(_ sender: UIButton){
+    delegate?.deleteCell(self)
+    //        completion?(self)
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
