@@ -21,11 +21,18 @@ class AddTextViewController: UIViewController {
             
         }
     }
-
+    
+    var valueFromVC: textRFObject? {
+        didSet {
+            print(valueFromVC?.text)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textFieldSetUp()
         buttonSetUp()
+        textField.text = valueFromVC?.text
     }
 }
 
@@ -68,6 +75,7 @@ extension AddTextViewController {
     
     @objc func btn() {
         print(textField.text)
+        valueFromVC?.text = textField.text!
         textField.text = ""
         
         self.navigationController?.popViewController(animated: true)

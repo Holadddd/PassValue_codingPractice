@@ -85,7 +85,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="4tU-md-lwd" id="C36-yH-WDH"/>
-                        <segue destination="ycr-0c-rkU" kind="push" identifier="AddText" id="yGr-pC-fRY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -95,7 +94,7 @@
         <!--Add Text View Controller-->
         <scene sceneID="pDM-ii-hck">
             <objects>
-                <viewController id="ycr-0c-rkU" customClass="AddTextViewController" customModule="PassValue_codingPractice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTextViewController" id="ycr-0c-rkU" customClass="AddTextViewController" customModule="PassValue_codingPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="90I-dX-ymD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
