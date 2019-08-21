@@ -143,9 +143,12 @@ extension ViewController: UITableViewDataSource {
 extension ViewController {
     
     @objc func btnDeleteCell(sender: UIButton) {
-        print(sender.accessibilityElements![0])
-        guard let cell = sender.accessibilityElements?[0] as? PassValueTableViewCell else { fatalError() }
-        
+        //accessibilityElements store cell
+//        print(sender.accessibilityElements![0])
+//        guard let cell = sender.accessibilityElements?[0] as? PassValueTableViewCell else { fatalError() }
+        //superView sender(UIButton) -> UITableViewCellContentView(some) -> PassValueTableViewCell(some)
+        guard let cell = sender.superview?.superview as? PassValueTableViewCell else { fatalError() }
+        print(cell)
         deleteCell(cell)
     }
 
